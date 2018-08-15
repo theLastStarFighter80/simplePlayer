@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,5 +34,19 @@ public class MainActivity extends AppCompatActivity {
                 mediaPlayer.pause();
             }
         });
+
+        // Initialize listener using setOnCompletionListener for mediaPlayer object
+        // and declare new method OnCompletionListener as an argument.
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            // Override onCompletion method to apply desired operations.
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer){
+                // Whatever you want to do when the audio playback is done...
+                // Here I show a toast message as an indicator
+                //for audio playback completion.
+                Toast.makeText(MainActivity.this,"I'm done!",Toast.LENGTH_LONG).show();
+            }
+        } );
     }
+
 }
